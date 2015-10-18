@@ -1,4 +1,4 @@
-# littleosbook Code
+# os
 
 While reading [the little book about OS development](https://littleosbook.github.io/), I worked through the exercises they posed and put together pieces of an operating system as they suggested. This is the result of working through those exercises.
 
