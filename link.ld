@@ -4,9 +4,6 @@ SECTIONS {
 	.text ALIGN (0x1000) : /* align at 4KB */
 	{
 		*(.text) /* text section from file(s) */
-	}
-	.rodata ALIGN (0x1000) :
-	{
 		*(.rodata*) /* all read-only data sections */
 	}
 	.data ALIGN (0x1000) :

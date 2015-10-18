@@ -1,4 +1,4 @@
-OBJECTS = loader.o kernel/framebuffer.o kernel/io.o
+OBJECTS = loader.o kernel/kernel.o kernel/framebuffer.o kernel/io.o
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
 		 -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
@@ -6,7 +6,7 @@ LDFLAGS = -T link.ld -melf_i386
 AS = nasm
 ASFLAGS = -f elf
 
-all: kernel.elf bootloader os.iso
+all: kernel.elf iso/boot/grub/stage2_eltorito os.iso
 
 kernel.elf: $(OBJECTS)
 	ld $(LDFLAGS) $(OBJECTS) -o kernel.elf
@@ -30,14 +30,13 @@ os.iso:
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
 
-bootloader:
-	wget http://littleosbook.github.com/files/stage2_eltorito
+iso/boot/grub/stage2_eltorito:
 	mkdir -p iso/boot/grub
-	mv stage2_eltorito iso/boot/grub/
+	cp stage2_eltorito iso/boot/grub/
 	cp menu.lst iso/boot/grub/
 
 run:
 	bochs -f bochsrc.txt -q
 
 clean:
-	-rm -rf *.o kernel/*.o kernel.elf os.iso stage2_eltorito iso bochslog.txt
+	-rm -rf *.o kernel/*.o kernel.elf os.iso iso bochslog.txt
