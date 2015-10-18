@@ -6,7 +6,7 @@ LDFLAGS = -T link.ld -melf_i386
 AS = nasm
 ASFLAGS = -f elf
 
-all: kernel.elf
+all: kernel.elf bootloader os.iso
 
 kernel.elf: $(OBJECTS)
 	ld $(LDFLAGS) $(OBJECTS) -o kernel.elf
@@ -40,4 +40,4 @@ run:
 	bochs -f bochsrc.txt -q
 
 clean:
-	-rm -rf *.o kernel.elf os.iso stage2_eltorito iso bochslog.txt
+	-rm -rf *.o kernel/*.o kernel.elf os.iso stage2_eltorito iso bochslog.txt
