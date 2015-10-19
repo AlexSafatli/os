@@ -1,4 +1,4 @@
-OBJECTS = loader.o kernel/kernel.o kernel/framebuffer.o kernel/io.o
+OBJECTS = loader.o kernel/kernel.o kernel/framebuffer.o kernel/io.o kernel/serial.o
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
 		 -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
@@ -39,4 +39,4 @@ run:
 	bochs -f bochsrc.txt -q
 
 clean:
-	-rm -rf *.o kernel/*.o kernel.elf os.iso iso bochslog.txt
+	-rm -rf *.o kernel/*.o kernel.elf os.iso iso bochslog.txt com1.out

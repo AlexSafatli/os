@@ -1,6 +1,4 @@
 #include "kernel.h"
-#include "framebuffer.h"
-#include "serial.h"
 
 void clear() {
 	int i;
