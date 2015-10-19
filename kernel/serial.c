@@ -35,3 +35,11 @@ void serial_config_modem(unsigned short com) {
 int serial_is_transmit_fifo_empty(unsigned short com) {
   return inb(SERIAL_LINE_STATUS_PORT(com)) & 0x20; // 0x20 = 0010 0000
 }
+
+void serial_write(unsigned short com, char *buf, unsigned int len) {
+  // TODO: Make not spin -- no wait-queue or event dispatching mechanism.
+  //  For now, it just waits until data is available.
+  unsigned int i;
+  while (!serial_is_transmit_fifo_empty(com)) ; // You Spin Me Right Round
+  for (i = 0; i < len; ++i) outb(SERIAL_DATA_PORT(com), buf[i]);
+}

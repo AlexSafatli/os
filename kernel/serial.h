@@ -79,4 +79,7 @@ void serial_config_modem(unsigned short com);
 /* Returns whether transmit FIFO queue is empty or not for a COM port. */
 int serial_is_transmit_fifo_empty(unsigned short com);
 
+/* Write to the serial port. */
+void serial_write(unsigned short com, char *buf, unsigned int len);
+
 #endif
