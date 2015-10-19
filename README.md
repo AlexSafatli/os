@@ -8,6 +8,10 @@ The final product of this repository is intended to be a minimal, rudimentary, w
 
 There is *no* presumption for any elements of a computer apart from it being an x86 architecture, possessing your usual hardware such as a framebuffer to allow writing to the screen, and any such other devices.
 
+## References
+
+All references read and used while performing these exercises are found in [a file in the repository](refs.txt).
+
 ## Disclaimer
 
 This is not a truly working or productive operating system for any reasonable development environment. This operating system is for educational purposes only.
