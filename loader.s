@@ -15,8 +15,8 @@ align 4                              ; code must be 4 byte aligned
 
 loader:                              ; loader label, entry point in linker script
   mov eax, 0xCAFEBABE                ; place number 0xCAFEBABE into eax register
-  ; make stack register point to stack
   mov esp, kernel_stack + KERNEL_STACK_SIZE
+                                     ; make stack register point to stack
   call kernel_init                   ; initialize kernel
 .loop:
   jmp .loop                          ; loop forever
