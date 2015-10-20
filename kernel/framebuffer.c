@@ -13,7 +13,7 @@ static unsigned short cursor_pos = 0;
 
 // Initialize the framebuffer.
 void fb_init() {
-	fb = (struct framebuffer*) 0x000B8000;
+	fb = (struct framebuffer*) FB_BUFFER;
 }
 
 // Write a character with a foreground and background at position pos in framebuffer.
