@@ -2,5 +2,5 @@
 
 void gdt_init() {
   // Do stuff.
-  rlsr(); // Reload segment registers.
+  gdt_reload(); // Reload segment registers.
 }

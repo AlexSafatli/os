@@ -14,10 +14,10 @@
 #define GDT_H
 
 // Table Data Structure
-typedef struct gdt {
+struct gdt {
   unsigned int address;
   unsigned short size; // of the table
-} __attribute__((packed)) gdt_t;
+} __attribute__((packed));
 
 // Privilege Levels
 #define GDT_PL0 0x0
@@ -27,9 +27,9 @@ typedef struct gdt {
 void gdt_init();
 
 /* Reload all segment registers. */
-void rlsr();
+void gdt_reload();
 
 /* Grab the GDT from the architecture. */
-void lgdt(gdt_t g);
+void lgdt(struct gdt g);
 
 #endif
