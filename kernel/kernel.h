@@ -3,6 +3,7 @@
 
 #include "framebuffer.h"
 #include "serial.h"
+#include "gdt.h"
 
 void clear();
 void kernel_init();

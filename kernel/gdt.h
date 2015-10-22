@@ -43,9 +43,6 @@ struct gdt_entry { // 8 byte entry
 /* Initialize all logic for managing the GDT. */
 void gdt_init();
 
-/* Reload all segment registers. */
-void gdt_reload();
-
 /* Tell the computer where our GDT will be (load it). */
 void lgdt(struct gdt g);
 
