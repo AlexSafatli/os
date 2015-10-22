@@ -21,9 +21,24 @@ struct gdt {
   unsigned short size; // of the table
 } __attribute__((packed));
 
+// Table Entry (GDT#Structure)
+struct gdt_entry { // 8 byte entry
+  unsigned short limit_0_15;
+  unsigned short base_0_15;
+  unsigned char base_16_23;
+  unsigned char access_byte;
+  unsigned char limit_16_19_and_flags;
+  unsigned char base_24_31;
+} __attribute__((packed));
+
 // Privilege Levels
-#define GDT_PL0 0x0
+#define GDT_PL0 0x0 /* Kernel Mode */
 #define GDT_PL1 0x3
+
+// Entry Definitions
+#define GDT_NUM_ENTRIES 3
+#define GDT_MIN_RANGE 0x00000000
+#define GDT_MAX_RANGE 0xFFFFFFFF
 
 /* Initialize all logic for managing the GDT. */
 void gdt_init();
@@ -31,7 +46,7 @@ void gdt_init();
 /* Reload all segment registers. */
 void gdt_reload();
 
-/* Grab the GDT from the architecture. */
+/* Tell the computer where our GDT will be (load it). */
 void lgdt(struct gdt g);
 
 #endif

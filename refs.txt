@@ -1,6 +1,7 @@
 [LOSB] littleosbook (https://littleosbook.github.io/)
 [SPRO] Serial Programming WikiBook (http://en.wikibooks.org/wiki/Serial_Programming/8250_UART_Programming#UART_Registers)
 [SPORTS] Serial Ports OSDev (http://wiki.osdev.org/Serial_ports)
+[GDT] Global Descritpro Table OSDev (http://wiki.osdev.org/Global_descriptor_table)
 [startc] startc GitHub project (https://github.com/marssaxman/startc)
 [jsos] jsos GitHub project (https://github.com/charliesome/jsos)
 [BB] Bare Bones OSDev (http://wiki.osdev.org/Bare_Bones)
