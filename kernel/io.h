@@ -1,3 +1,9 @@
+/* io.h 
+* Author: Alex Safatli
+* I/O Port Function Prototypes
+* @see io.s
+*/
+
 #ifndef IO_H
 #define IO_H
 

@@ -1,3 +1,10 @@
+/* framebuffer.h
+* Author: Alex Safatli
+* Driver for writing to framebuffer (buffer of memory on screen).
+* Part of toy operating system wrote while reading LOS.
+* See LOS4.2.1.
+*/
+
 #ifndef FRAMEBUFFER_H
 #define FRAMEBUFFER_H
 

@@ -1,3 +1,12 @@
+; =============================================================================
+; os
+; AlexSafatli
+;
+; Oct 2015
+;
+; I/O Port Functions
+; =============================================================================
+
 global outb ; makes label outb available outside this file
 global inb  ; make label inb available outside this file
 
