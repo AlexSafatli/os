@@ -15,21 +15,21 @@
 #ifndef GDT_H
 #define GDT_H
 
-// Table Data Structure
-struct gdt {
+// Table Pointer Structure
+typedef struct gdt_ptr {
   unsigned int address;
   unsigned short size; // of the table
-} __attribute__((packed));
+} __attribute__((packed)) gdt_ptr_t;
 
 // Table Entry (GDT#Structure)
-struct gdt_entry { // 8 byte entry
+typedef struct gdt_entry { // 8 byte entry
   unsigned short limit_0_15;
   unsigned short base_0_15;
   unsigned char base_16_23;
   unsigned char access_byte;
   unsigned char limit_16_19_and_flags;
   unsigned char base_24_31;
-} __attribute__((packed));
+} __attribute__((packed)) gdt_entry_t;
 
 // Privilege Levels
 #define GDT_PL0 0x0 /* Kernel Mode */
@@ -37,13 +37,16 @@ struct gdt_entry { // 8 byte entry
 
 // Entry Definitions
 #define GDT_NUM_ENTRIES 3
-#define GDT_MIN_RANGE 0x00000000
 #define GDT_MAX_RANGE 0xFFFFFFFF
 
 /* Initialize all logic for managing the GDT. */
 void gdt_init();
 
+/* Set an entry in the GDT. */
+void gdt_set_entry(int pos, unsigned int base, 
+  unsigned int limit, unsigned short access, unsigned short flags);
+
 /* Tell the computer where our GDT will be (load it). */
-void lgdt(struct gdt g);
+void lgdt(gdt_ptr_t *ptr);
 
 #endif

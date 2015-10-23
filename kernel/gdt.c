@@ -5,31 +5,37 @@
 
 #include "gdt.h"
 
-static struct gdt_entry gdt_entries[GDT_NUM_ENTRIES];
-static struct gdt gdt_table;
+gdt_entry_t gdt_entries[GDT_NUM_ENTRIES];
+gdt_ptr_t   gdt;
 
 void gdt_init() {
   
   // Set table entries.
-  gdt_entries[1].limit_0_15 = GDT_MAX_RANGE & 0xFFFF;
-  gdt_entries[1].base_0_15 = GDT_MIN_RANGE & 0xFFFF;
-  gdt_entries[1].base_16_23 = (GDT_MIN_RANGE >> 16) & 0xFF;
-  gdt_entries[1].access_byte = 0x2 /* Readable */ | 0x8 /* Code */ | 
-                              ((GDT_PL0 & 0x3) << 5) | (0x1 << 4) | (0x1 << 7);
-  gdt_entries[1].limit_16_19_and_flags = 0;
-  gdt_entries[1].base_24_31 = 0x00;
-
-  gdt_entries[2].limit_0_15 = GDT_MAX_RANGE & 0xFFFF;
-  gdt_entries[2].base_0_15 = GDT_MIN_RANGE & 0xFFFF;
-  gdt_entries[2].base_16_23 = (GDT_MIN_RANGE >> 16) & 0xFF;
-  gdt_entries[2].access_byte = 0x2 /* Readable */ |
-                              ((GDT_PL0 & 0x3) << 5) | (0x1 << 4) | (0x1 << 7);
-  gdt_entries[2].limit_16_19_and_flags = 0;
-  gdt_entries[2].base_24_31 = 0x00;
+  gdt_set_entry(0, 0, 0, 0 ,0); // Null entry.
+  gdt_set_entry(1, 0, GDT_MAX_RANGE, 0x9A, 0xCF);
+  gdt_set_entry(2, 0, GDT_MAX_RANGE, 0x92, 0xCF);
 
   // Set GDT Metadata.
-  gdt_table.size = (sizeof(struct gdt_entry) * GDT_NUM_ENTRIES) - 1;
-  gdt_table.address = (unsigned int)&gdt_entries;
-  lgdt(gdt_table); // Load the table.
+  gdt.size = (sizeof(gdt_entry_t) * GDT_NUM_ENTRIES) - 1;
+  gdt.address = (unsigned int)&gdt_entries;
+  lgdt(&gdt); // Load the table.
+
+}
+
+void gdt_set_entry(int pos, unsigned int base, 
+  unsigned int limit, unsigned short access, unsigned short flags) {
+  
+  // Set base.
+  gdt_entries[pos].base_0_15  = (base & 0xFFFF);
+  gdt_entries[pos].base_16_23 = (base >> 16) & 0xFF;
+  gdt_entries[pos].base_24_31 = (base >> 24) & 0xFF;
+
+  // Set limit, flags.
+  gdt_entries[pos].limit_0_15 = (limit & 0xFFFF);
+  gdt_entries[pos].limit_16_19_and_flags = ((limit >> 16) & 0x0F) | 
+                                           (flags & 0xF0);
+
+  // Access
+  gdt_entries[pos].access_byte = access;
 
 }
