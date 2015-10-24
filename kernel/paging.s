@@ -1,4 +1,4 @@
-global lgdt ; makes label lgdt available outside this file
+global lgdt          ; makes label lgdt available outside this file
 
 ; lgdt - load the global descriptor table (GDT)
 ; stack: [esp + 4] GDT descriptor
@@ -14,5 +14,5 @@ lgdt:
   mov gs, ax         ;
   mov fs, ax         ;
   jmp 0x08:.flush    ; code segment needs to be reloaded with far jump
-.flush:
-  ret
+.flush:              ;
+  ret                ; return to calling function

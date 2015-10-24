@@ -11,14 +11,16 @@ gdt_ptr_t   gdt;
 void gdt_init() {
   
   // Set table entries.
-  gdt_set_entry(0, 0, 0, 0 ,0); // Null entry.
-  gdt_set_entry(1, 0, GDT_MAX_RANGE, 0x9A, 0xCF);
-  gdt_set_entry(2, 0, GDT_MAX_RANGE, 0x92, 0xCF);
+  gdt_set_entry(0, 0, 0,             0,    0   ); // Null entry.
+  gdt_set_entry(1, 0, GDT_MAX_RANGE, 0x9A, 0xCF); // Code segment.
+  gdt_set_entry(2, 0, GDT_MAX_RANGE, 0x92, 0xCF); // Data segment.
 
   // Set GDT Metadata.
-  gdt.size = (sizeof(gdt_entry_t) * GDT_NUM_ENTRIES) - 1;
   gdt.address = (unsigned int)&gdt_entries;
-  lgdt(&gdt); // Load the table.
+  gdt.size = (sizeof(gdt_entry_t) * GDT_NUM_ENTRIES) - 1;
+  
+  // Load the table.
+  lgdt(&gdt);
 
 }
 
