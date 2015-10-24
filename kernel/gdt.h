@@ -31,12 +31,8 @@ typedef struct gdt_entry { // 8 byte entry
   unsigned char base_24_31;
 } __attribute__((packed)) gdt_entry_t;
 
-// Privilege Levels
-#define GDT_PL0 0x0 /* Kernel Mode */
-#define GDT_PL1 0x3
-
 // Entry Definitions
-#define GDT_NUM_ENTRIES 3
+#define GDT_NUM_ENTRIES 5
 #define GDT_MAX_RANGE 0xFFFFFFFF
 
 /* Initialize all logic for managing the GDT. */
@@ -48,6 +44,5 @@ void gdt_set_entry(int pos, unsigned int base,
 
 /* Tell the computer where our GDT will be (load it). */
 void lgdt(unsigned int ptr);
-void bochs_debug(unsigned int val);
 
 #endif

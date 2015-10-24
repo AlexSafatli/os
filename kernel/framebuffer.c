@@ -17,6 +17,12 @@ void fb_init() {
 	fb = (struct framebuffer*) FB_BUFFER;
 }
 
+// Clear the framebuffer.
+void fb_clear() {
+	int i; char s[] = " ";
+	for (i = 0; i < FB_NUM_CELLS; ++i) fb_write(s, 1);
+}
+
 // Write a character with a foreground and background at position pos in framebuffer.
 void fb_write_cell(unsigned int pos, char c, unsigned char fg, unsigned char bg) {
 	fb[pos].c = c;

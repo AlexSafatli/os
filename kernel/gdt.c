@@ -14,6 +14,8 @@ void gdt_init() {
   gdt_set_entry(0, 0, 0,             0,    0   ); // Null entry.
   gdt_set_entry(1, 0, GDT_MAX_RANGE, 0x9A, 0xCF); // Code segment.
   gdt_set_entry(2, 0, GDT_MAX_RANGE, 0x92, 0xCF); // Data segment.
+  gdt_set_entry(3, 0, GDT_MAX_RANGE, 0xFA, 0xCF); // User mode code segment.
+  gdt_set_entry(4, 0, GDT_MAX_RANGE, 0xF2, 0xCF); // User mode data segment.
 
   // Set GDT Metadata.
   gdt.limit   = (sizeof(gdt_entry_t) * GDT_NUM_ENTRIES) - 1;

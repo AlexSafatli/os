@@ -1,5 +1,4 @@
 global lgdt          ; makes label lgdt available outside this file
-global bochs_debug
 
 ; lgdt - load the global descriptor table (GDT)
 ; stack: [esp + 4] GDT descriptor

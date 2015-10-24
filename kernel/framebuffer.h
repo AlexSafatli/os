@@ -51,7 +51,9 @@ struct framebuffer {
 } __attribute__((packed));
 
 void fb_init();
-void fb_write_cell(unsigned int pos, char c, unsigned char fg, unsigned char bg);
+void fb_clear();
+void fb_write_cell(unsigned int pos, char c, unsigned char fg,
+  unsigned char bg);
 void fb_move_cursor(unsigned short pos);
 void fb_write(char *buf, unsigned int len);
 
