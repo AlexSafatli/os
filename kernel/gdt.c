@@ -16,8 +16,8 @@ void gdt_init() {
   gdt_set_entry(2, 0, GDT_MAX_RANGE, 0x92, 0xCF); // Data segment.
 
   // Set GDT Metadata.
+  gdt.limit   = (sizeof(gdt_entry_t) * GDT_NUM_ENTRIES) - 1;
   gdt.address = (unsigned int)&gdt_entries;
-  gdt.size = (sizeof(gdt_entry_t) * GDT_NUM_ENTRIES) - 1;
 
   // Load the table.
   lgdt((unsigned int)&gdt);

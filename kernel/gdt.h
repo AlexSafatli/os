@@ -17,8 +17,8 @@
 
 // Table Pointer Structure
 typedef struct gdt_ptr {
-  unsigned int address;
-  unsigned short size; // of the table
+  unsigned short limit; // upper 16 bits of all selector limits = (size - 1)
+  unsigned int address; // address of GDT entries
 } __attribute__((packed)) gdt_ptr_t;
 
 // Table Entry (GDT#Structure)
