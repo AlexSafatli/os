@@ -26,8 +26,8 @@ typedef struct gdt_entry { // 8 byte entry
   unsigned short limit_0_15;
   unsigned short base_0_15;
   unsigned char base_16_23;
-  unsigned char access_byte;
-  unsigned char limit_16_19_and_flags;
+  unsigned char access;
+  unsigned char limit_16_19_flags;
   unsigned char base_24_31;
 } __attribute__((packed)) gdt_entry_t;
 
@@ -47,6 +47,7 @@ void gdt_set_entry(int pos, unsigned int base,
   unsigned int limit, unsigned short access, unsigned short flags);
 
 /* Tell the computer where our GDT will be (load it). */
-void lgdt(gdt_ptr_t *ptr);
+void lgdt(unsigned int ptr);
+void bochs_debug(unsigned int val);
 
 #endif

@@ -18,9 +18,9 @@ void gdt_init() {
   // Set GDT Metadata.
   gdt.address = (unsigned int)&gdt_entries;
   gdt.size = (sizeof(gdt_entry_t) * GDT_NUM_ENTRIES) - 1;
-  
+
   // Load the table.
-  lgdt(&gdt);
+  lgdt((unsigned int)&gdt);
 
 }
 
@@ -34,10 +34,10 @@ void gdt_set_entry(int pos, unsigned int base,
 
   // Set limit, flags.
   gdt_entries[pos].limit_0_15 = (limit & 0xFFFF);
-  gdt_entries[pos].limit_16_19_and_flags = ((limit >> 16) & 0x0F) | 
+  gdt_entries[pos].limit_16_19_flags = ((limit >> 16) & 0x0F) | 
                                            (flags & 0xF0);
 
   // Access
-  gdt_entries[pos].access_byte = access;
+  gdt_entries[pos].access = access;
 
 }
