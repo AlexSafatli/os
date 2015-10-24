@@ -5,6 +5,7 @@ global lgdt ; makes label lgdt available outside this file
 ;        [esp    ] The return address
 lgdt:
   mov eax, [esp + 4] ; get GDT descriptor
+  xchg bx, bx        ; [DEBUG] REMOVE
   lgdt [eax]         ; load the table - tells computer where GDT lives
   mov ax, 0x10       ; reload segment selector registers
   mov ds, ax         ;
