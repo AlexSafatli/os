@@ -21,3 +21,8 @@ the address space, that may overlap, specified by a *base address* and some
 *limit*). As suggested in LOS, segmentation is enabled in this kernel by the
 description of a **Global Descriptor Table** (GDT) that is shared by all 
 possible processes. This table is defined in `gdt.h` and implemented in `gdt.c`.
+
+## Interrupt Handling
+
+Rudimentary interrupt handling using an **Interrupt Descriptor Table** (IDT) is
+being implemented in `idt.h` and `idt.c`.
