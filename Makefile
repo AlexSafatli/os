@@ -41,4 +41,4 @@ run:
 	bochs -f bochsrc.txt -q
 
 clean:
-	-rm -rf *.o kernel/*.o kernel.elf os.iso iso bochslog.txt com1.out
+	-rm -rf *.o kernel/*.o lib/stdlibc/*.o kernel.elf os.iso iso bochslog.txt com1.out
