@@ -1,15 +1,17 @@
-OBJECTS = loader.o kernel/kernel.o kernel/framebuffer.o kernel/io.o kernel/serial.o kernel/gdt.o kernel/paging.o
+KERNEL_OBJS = loader.o kernel/kernel.o kernel/framebuffer.o kernel/io.o \
+			kernel/serial.o kernel/gdt.o kernel/paging.o kernel/idt.o
+STDLIB_OBJS = lib/stdlibc/string.o
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
-		 -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
+		 	-nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c -I./lib/stdlibc/
 LDFLAGS = -T link.ld -melf_i386
 AS = nasm
 ASFLAGS = -f elf
 
 all: kernel.elf iso/boot/grub/stage2_eltorito os.iso
 
-kernel.elf: $(OBJECTS)
-	ld $(LDFLAGS) $(OBJECTS) -o kernel.elf
+kernel.elf: $(STDLIB_OBJS) $(KERNEL_OBJS)
+	ld $(LDFLAGS) $(STDLIB_OBJS) $(KERNEL_OBJS) -o kernel.elf
 
 os.iso:
 	cp kernel.elf iso/boot/kernel.elf
