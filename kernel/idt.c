@@ -21,7 +21,7 @@ void idt_init() {
 void idt_set_entry(int pos, unsigned int offset, unsigned short selector, 
   unsigned char flags) {
 
-  idt_entires[pos].offset_0_15  = offset & 0xFFFF;
+  idt_entries[pos].offset_0_15  = offset & 0xFFFF;
   idt_entries[pos].offset_16_31 = (offset >> 16) & 0xFFFF;
   idt_entries[pos].selector     = selector;
   idt_entries[pos].reserved     = 0;
