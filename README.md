@@ -10,8 +10,8 @@ system as they suggested. This is the result of working through those exercises.
 The final product of this repository is intended to be a minimally working toy 
 operating system as a simple kernel written in **ANSI C** and **Assembly** with 
 absolutely no assumption of a standard library or any other preceding code, 
-i.e. an operating system built from scratch. As part of its implementation, a
-a subset of the *C standard library* will be rewritten.
+i.e. an operating system built from scratch. As part of its implementation, a 
+subset of the *C standard library* will be rewritten.
 
 There is *no* presumption for any elements of a computer apart from it being an 
 x86 architecture, possessing your usual hardware such as a framebuffer to allow 
