@@ -8,7 +8,7 @@ system as they suggested. This is the result of working through those exercises.
 ## Purpose
 
 The final product of this repository is intended to be a minimally working toy 
-operating system as a simple kernel written in **ANSI C** and **Assembly** with 
+operating system as a simple kernel written in Standard **C** and **Assembly** with 
 absolutely no assumption of a standard library or any other preceding code, 
 i.e. an operating system built from scratch. As part of its implementation, a 
 subset of the *C standard library* will be rewritten.
