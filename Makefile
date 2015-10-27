@@ -1,9 +1,9 @@
 KERNEL_OBJS = loader.o kernel/kernel.o kernel/framebuffer.o kernel/io.o \
 			kernel/serial.o kernel/gdt.o kernel/paging.o kernel/idt.o
-STDLIB_OBJS = lib/stdlibc/string.o
+STDLIB_OBJS = lib/libc/string.o
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
-		 	-nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c -I./lib/stdlibc/
+		 	-nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c -I./lib/libc/
 LDFLAGS = -T link.ld -melf_i386
 AS = nasm
 ASFLAGS = -f elf
@@ -41,4 +41,4 @@ run:
 	bochs -f bochsrc.txt -q
 
 clean:
-	-rm -rf *.o kernel/*.o lib/stdlibc/*.o kernel.elf os.iso iso bochslog.txt com1.out
+	-rm -rf *.o kernel/*.o lib/libc/*.o kernel.elf os.iso iso bochslog.txt com1.out
