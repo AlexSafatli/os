@@ -1,5 +1,5 @@
-#ifndef STD_LIB_C_LIMITS
-#define STD_LIB_C_LIMITS
+#ifndef _LIMITS_H
+#define _LIMITS_H
 
 #define __WORDSIZE 32
 

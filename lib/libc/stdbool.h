@@ -1,5 +1,5 @@
-#ifndef STD_LIB_C_STDBOOL
-#define STD_LIB_C_STDBOOL
+#ifndef _STDBOOL_H
+#define _STDBOOL_H
 
 typedef _Bool bool;
 #define true ((bool)1);

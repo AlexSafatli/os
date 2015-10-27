@@ -1,5 +1,5 @@
-#ifndef STD_LIB_C_MATH
-#define STD_LIB_C_MATH
+#ifndef _MATH_H
+#define _MATH_H
 
 #define NAN (0.0/0.0)
 #define INFINITY (1.0/0.0)

@@ -1,5 +1,5 @@
-#ifndef STD_LIB_C_STDARG
-#define STD_LIB_C_STDARG
+#ifndef _STDARG_H
+#define _STDARG_H
 
 typedef unsigned int* va_list;
 

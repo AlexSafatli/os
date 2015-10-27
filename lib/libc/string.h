@@ -1,5 +1,5 @@
-#ifndef STD_LIB_C_STRING
-#define STD_LIB_C_STRING
+#ifndef _STRING_H
+#define _STRING_H
 
 #include "stddef.h"
 
