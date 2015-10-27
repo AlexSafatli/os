@@ -36,8 +36,7 @@ void gdt_set_entry(int pos, unsigned int base,
 
   // Set limit, flags.
   gdt_entries[pos].limit_0_15 = (limit & 0xFFFF);
-  gdt_entries[pos].limit_16_19_flags = ((limit >> 16) & 0x0F) | 
-                                           (flags & 0xF0);
+  gdt_entries[pos].limit_16_19_flags = ((limit >> 16) & 0x0F) | (flags & 0xF0);
 
   // Access
   gdt_entries[pos].access = access;
