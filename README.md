@@ -2,21 +2,24 @@
 
 While reading 
 [*the little book about OS development*](https://littleosbook.github.io/), I 
-worked through the exercises they posed and put together pieces of an operating 
-system as they suggested. This is the result of working through those exercises.
+worked through some of the exercises they presented and put together pieces 
+of my own operating system. This repository contains the code that has come 
+from working through those exercises and subsequently building upon them 
+with the use of other resources (see below).
+
+## Dependencies
+
+Loading of the operating systems and incredibly low-level tasks are 
+delegated to **Assembly** code. Otherwise, the rest of the kernel and other 
+pieces of this operating system are written in Standard **C**.
 
 ## Purpose
 
-The final product of this repository is intended to be a minimally working toy 
-operating system as a simple kernel written in Standard **C** and **Assembly** with 
-absolutely no assumption of a standard library or any other preceding code, 
-i.e. an operating system built from scratch. As part of its implementation, a 
-subset of the *C standard library* will be rewritten.
+When completed, I hope to have a working toy operating system with a 
+minimal implementation, i.e. an operating system built from scratch. As part 
+of its implementation, a subset of the *C standard library* will be rewritten.
 
-There is *no* presumption for any elements of a computer apart from it being an 
-x86 architecture, possessing your usual hardware such as a framebuffer to allow 
-writing to the screen, and any such other devices. Thus far, this operating 
-system has been written for a *32-bit architecture*.
+This operating system is intended for use on 32-bit x86 architecture.
 
 ## References
 
@@ -27,4 +30,3 @@ All references read and used while performing these exercises are found in
 
 This is not a truly working or productive operating system for any reasonable 
 development environment. This operating system is for educational purposes only.
-
