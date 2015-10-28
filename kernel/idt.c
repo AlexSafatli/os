@@ -4,6 +4,7 @@
 
 #include "idt.h"
 #include "framebuffer.h"
+#include <stdlib.h>
 
 idt_entry_t idt_entries[IDT_NUM_ENTRIES];
 idt_ptr_t   idt;
@@ -71,7 +72,8 @@ void interrupt_handler(cpu_state_t cpu, stack_state_t stack,
   unsigned int interrupt) {
 
   (void)cpu; (void)stack; (void)interrupt;
-  char s[] = "\nReceived Interrupt";
+  char s[] = "  ";
+  itoa(stack.error_code, s);
   fb_write(s, sizeof(s) - 1);
 
 }

@@ -3,7 +3,7 @@
 
 typedef struct cpu_state {
   unsigned int ds;
-	unsigned int edi, esi, ebp, esp;
+  unsigned int edi, esi, ebp, esp;
   unsigned int ebx, edx, ecx, eax;
 } cpu_state_t;
 
