@@ -4,10 +4,10 @@ global lidt
 ;        [esp    ] The return address
 lidt:
   mov eax, [esp + 4]                      ; get first entry address
-  lidt eax                                ; load the table
+  lidt [eax]                              ; load the table
   ret                                     ; return to calling function
 
-%macro no_error_code_interrupt_handler %1
+%macro no_error_code_interrupt_handler 1
 global isr%1                              ;
 isr%1:                                    ;
   cli                                     ;
@@ -16,13 +16,15 @@ isr%1:                                    ;
   jmp isr_common                          ; common interrupt handler code
 %endmacro
 
-%macro error_code_interrupt_handler %1
+%macro error_code_interrupt_handler 1
 global isr%1                              ; 
 isr%1:                                    ;
   cli                                     ;
   push dword %1                           ; unsigned integer interrupt number
   jmp isr_common                          ; common interrupt handler code
 %endmacro
+
+extern interrupt_handler                  ; C function to handle interrupt
 
 isr_common:                               ;
   pusha                                   ; save registers

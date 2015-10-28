@@ -4,6 +4,7 @@
 #include "framebuffer.h"
 #include "serial.h"
 #include "gdt.h"
+#include "idt.h"
 
 void clear();
 void kernel_init();
