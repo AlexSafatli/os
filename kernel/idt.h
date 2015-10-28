@@ -10,6 +10,7 @@
 #define IDT_H
 
 #include <string.h>
+#include "interrupts.h"
 
 // Table Pointer Structure
 typedef struct idt_ptr {
