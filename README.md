@@ -7,9 +7,18 @@ of my own operating system. This repository contains the code that has come
 from working through those exercises and subsequently building upon them 
 with the use of other resources (see below).
 
+## Environment
+
+As described in 
+[*the little book about OS development*](https://littleosbook.github.io/), 
+the following should be performed on a Debian-based system. Similar packages 
+should be downloaded on other platforms.
+
+    sudo apt-get install build-essential nasm genisoimage bochs bochs-sdl
+
 ## Dependencies
 
-Loading of the operating systems and incredibly low-level tasks are 
+Loading of the operating system and incredibly low-level tasks are 
 delegated to **Assembly** code. Otherwise, the rest of the kernel and other 
 pieces of this operating system are written in Standard **C**.
 
