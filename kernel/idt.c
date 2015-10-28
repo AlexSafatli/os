@@ -30,3 +30,11 @@ void idt_set_entry(int pos, unsigned int offset, unsigned short selector,
   idt_entries[pos].flags        = flags /* | 0x60 */;
 
 }
+
+void interrupt_handler(cpu_state_t cpu, stack_state_t stack,
+  unsigned int interrupt) {
+
+  char s[] = "\nReceived Interrupt";
+  fb_write(s, sizeof(s) - 1);
+
+}
