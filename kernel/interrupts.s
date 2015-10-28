@@ -8,8 +8,8 @@ lidt:
   ret                                     ; return to calling function
 
 %macro no_error_code_interrupt_handler %1 ; interrupt handler for no error
-global isr_%1                             ;
-isr_%1:                                   ;
+global isr%1                              ;
+isr%1:                                    ;
   cli                                     ;
   push dword 0                            ; unsigned integer error code 0
   push dword %1                           ;                  interrupt number
@@ -17,8 +17,8 @@ isr_%1:                                   ;
 %endmacro                                 ;
 
 %macro error_code_interrupt_handler %1    ; interrupt handler with error code
-global isr_%1                             ; 
-isr_%1:                                   ;
+global isr%1                              ; 
+isr%1:                                    ;
   cli                                     ;
   push dword %1                           ; unsigned integer interrupt number
   jmp isr_common                          ; common interrupt handler code
