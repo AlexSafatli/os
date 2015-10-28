@@ -7,22 +7,22 @@ lidt:
   lidt eax                                ; load the table
   ret                                     ; return to calling function
 
-%macro no_error_code_interrupt_handler %1 ; interrupt handler for no error
+%macro no_error_code_interrupt_handler %1
 global isr%1                              ;
 isr%1:                                    ;
   cli                                     ;
   push dword 0                            ; unsigned integer error code 0
   push dword %1                           ;                  interrupt number
   jmp isr_common                          ; common interrupt handler code
-%endmacro                                 ;
+%endmacro
 
-%macro error_code_interrupt_handler %1    ; interrupt handler with error code
+%macro error_code_interrupt_handler %1
 global isr%1                              ; 
 isr%1:                                    ;
   cli                                     ;
   push dword %1                           ; unsigned integer interrupt number
   jmp isr_common                          ; common interrupt handler code
-%endmacro                                 ;
+%endmacro
 
 isr_common:                               ;
   pusha                                   ; save registers

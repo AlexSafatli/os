@@ -3,6 +3,7 @@
 */
 
 #include "idt.h"
+#include "framebuffer.h"
 
 idt_entry_t idt_entries[IDT_NUM_ENTRIES];
 idt_ptr_t   idt;
@@ -69,6 +70,7 @@ void idt_set_entry(int pos, unsigned int offset, unsigned short selector,
 void interrupt_handler(cpu_state_t cpu, stack_state_t stack,
   unsigned int interrupt) {
 
+  (void)cpu; (void)stack; (void)interrupt;
   char s[] = "\nReceived Interrupt";
   fb_write(s, sizeof(s) - 1);
 
