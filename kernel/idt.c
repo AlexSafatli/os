@@ -72,8 +72,5 @@ void interrupt_handler(cpu_state_t cpu, stack_state_t stack,
   unsigned int interrupt) {
 
   (void)cpu; (void)stack; (void)interrupt;
-  char s[] = "  ";
-  itoa(stack.error_code, s);
-  fb_write(s, sizeof(s) - 1);
 
 }
