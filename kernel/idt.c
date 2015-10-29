@@ -1,10 +1,4 @@
-/* idt.c
-* Author: Alex Safatli
-*/
-
 #include "idt.h"
-#include "framebuffer.h"
-#include <stdlib.h>
 
 idt_entry_t idt_entries[IDT_NUM_ENTRIES];
 idt_ptr_t   idt;
