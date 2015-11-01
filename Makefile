@@ -4,7 +4,7 @@ KERNEL_OBJS = loader.o kernel/kernel.o kernel/framebuffer.o kernel/io.o \
 STDLIB_OBJS = lib/libc/string.o lib/libc/stdlib.o
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
-		 	-nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c -I./lib/libc/
+			-nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c -I./lib/libc/
 LDFLAGS = -T link.ld -melf_i386
 AS = nasm
 ASFLAGS = -f elf
@@ -16,14 +16,15 @@ kernel.elf: $(STDLIB_OBJS) $(KERNEL_OBJS)
 
 os.iso:
 	cp kernel.elf iso/boot/kernel.elf
-	genisoimage -R -A os -b boot/grub/stage2_eltorito \
-                -no-emul-boot                       \
-                -boot-load-size 4                   \
-                -input-charset utf8                 \
-                -quiet                              \
-                -boot-info-table                    \
-                -o os.iso                           \
-                iso
+	@genisoimage -R -A os -b boot/grub/stage2_eltorito \
+				-no-emul-boot                          \
+				-boot-load-size 4                      \
+				-input-charset utf8                    \
+				-quiet                                 \
+				-boot-info-table                       \
+				-o os.iso                              \
+				iso
+	@echo "Created ISO"
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
