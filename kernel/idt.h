@@ -8,7 +8,6 @@
 #ifndef IDT_H
 #define IDT_H
 
-#include <string.h>
 #include "interrupts.h"
 
 // Table Pointer Structure

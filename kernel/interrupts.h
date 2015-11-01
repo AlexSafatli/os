@@ -1,15 +1,22 @@
 /* interrupts.h 
 * Author: Alex Safatli
-* Interrupt handler prototypes.
+* Interrupt handler prototypes and definitions necessary for interfacing with 
+* the programmable interrupt controller (PIC) in the architecture. As this is 
+* architecture dependent, some of the definitions for the PIC are found in the
+* appropriate architecture header file (x86.h).
 */
 
 #ifndef INTERRUPTS_H
 #define INTERRUPTS_H
 
 #include "x86.h"
+#include "io.h"
 
-// General Interrupt Handler
-void interrupt_handler(cpu_state_t cpu, stack_state_t stack, unsigned int interrupt);
+// General Interrupt Handler and Interrupt Request Handler
+void interrupt_handler(cpu_state_t cpu, stack_state_t stack, 
+  unsigned int interrupt);
+void interrupt_request_handler(cpu_state_t cpu, stack_state_t stack, 
+  unsigned int interrupt);
 
 // Load IDT Instruction
 void lidt(unsigned int ptr);
@@ -47,5 +54,23 @@ void isr28();
 void isr29();
 void isr30();
 void isr31();
+
+// Specific IRQ Handlers
+void irq0();
+void irq1();
+void irq2();
+void irq3();
+void irq4();
+void irq5();
+void irq6();
+void irq7();
+void irq8();
+void irq9();
+void irq10();
+void irq11();
+void irq12();
+void irq13();
+void irq14();
+void irq15();
 
 #endif

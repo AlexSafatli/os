@@ -1,4 +1,5 @@
 #include "idt.h"
+#include <string.h>
 
 idt_entry_t idt_entries[IDT_NUM_ENTRIES];
 idt_ptr_t   idt;
@@ -39,6 +40,22 @@ void idt_init() {
   idt_set_entry(29,(unsigned int) isr29, 0x08, 0x8E);
   idt_set_entry(30,(unsigned int) isr30, 0x08, 0x8E);
   idt_set_entry(31,(unsigned int) isr31, 0x08, 0x8E);
+  idt_set_entry(32,(unsigned int) irq0,  0x08, 0x8E);
+  idt_set_entry(33,(unsigned int) irq1,  0x08, 0x8E);
+  idt_set_entry(34,(unsigned int) irq2,  0x08, 0x8E);
+  idt_set_entry(35,(unsigned int) irq3,  0x08, 0x8E);
+  idt_set_entry(36,(unsigned int) irq4,  0x08, 0x8E);
+  idt_set_entry(37,(unsigned int) irq5,  0x08, 0x8E);
+  idt_set_entry(38,(unsigned int) irq6,  0x08, 0x8E);
+  idt_set_entry(39,(unsigned int) irq7,  0x08, 0x8E);
+  idt_set_entry(40,(unsigned int) irq8,  0x08, 0x8E);
+  idt_set_entry(41,(unsigned int) irq9,  0x08, 0x8E);
+  idt_set_entry(42,(unsigned int) irq10, 0x08, 0x8E);
+  idt_set_entry(43,(unsigned int) irq11, 0x08, 0x8E);
+  idt_set_entry(44,(unsigned int) irq12, 0x08, 0x8E);
+  idt_set_entry(45,(unsigned int) irq13, 0x08, 0x8E);
+  idt_set_entry(46,(unsigned int) irq14, 0x08, 0x8E);
+  idt_set_entry(47,(unsigned int) irq15, 0x08, 0x8E);
 
   // Set IDT Metadata.
   idt.limit   = (sizeof(idt_entry_t) * IDT_NUM_ENTRIES) - 1;
@@ -66,5 +83,13 @@ void interrupt_handler(cpu_state_t cpu, stack_state_t stack,
   unsigned int interrupt) {
 
   (void)cpu; (void)stack; (void)interrupt;
+
+}
+
+void interrupt_request_handler(cpu_state_t cpu, stack_state_t stack,
+  unsigned int interrupt) {
+
+  (void)cpu; (void)stack;
+  pic_send_eoi(interrupt - 32);
 
 }
