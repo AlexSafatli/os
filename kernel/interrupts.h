@@ -1,3 +1,8 @@
+/* interrupts.h 
+* Author: Alex Safatli
+* Interrupt handler prototypes.
+*/
+
 #ifndef INTERRUPTS_H
 #define INTERRUPTS_H
 

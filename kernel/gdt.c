@@ -1,8 +1,3 @@
-/* gdt.c
-* Author: Alex Safatli
-* A GDT is an array of 8-byte segment descriptors.
-*/
-
 #include "gdt.h"
 
 gdt_entry_t gdt_entries[GDT_NUM_ENTRIES];

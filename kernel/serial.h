@@ -1,3 +1,8 @@
+/* serial.h 
+* Author: Alex Safatli
+* Serial Port Driver
+*/
+
 #ifndef SERIAL_H
 #define SERIAL_H
 

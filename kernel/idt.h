@@ -3,7 +3,6 @@
 * An interrupt descriptor table (IDT) is a table telling the processor where
 * defined handler functions are located in memory that will handle respective
 * interrupts.
-*
 */
 
 #ifndef IDT_H

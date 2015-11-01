@@ -1,10 +1,3 @@
-/* framebuffer.c
-* Author: Alex Safatli
-* Driver for writing to framebuffer (buffer of memory on screen).
-* Part of toy operating system wrote while reading LOS.
-* See LOS4.2.1.
-*/
-
 #include "framebuffer.h"
 
 // Pointer to framebuffer, current color, cursor index.
@@ -23,8 +16,9 @@ void fb_clear() {
 	for (i = 0; i < FB_NUM_CELLS; ++i) fb_write(s, 1);
 }
 
-// Write a character with a foreground and background at position pos in framebuffer.
-void fb_write_cell(unsigned int pos, char c, unsigned char fg, unsigned char bg) {
+// Write a character with a foreground and background at position pos in buffer.
+void fb_write_cell(unsigned int pos, char c, unsigned char fg, 
+	unsigned char bg) {
 	fb[pos].c = c;
 	fb[pos].colors = ((fg & 0x0F) << 4) | (bg & 0x0F);
 }
@@ -37,8 +31,9 @@ void fb_move_cursor(unsigned short pos) {
 	outb(FB_DATA_PORT, pos & 0x00FF);
 }
 
-// Write the contents of a buffer of length len to the screen. Should automatically
-// advance the cursor after a character has been written, and scroll if necessary.
+// Write the contents of a buffer of length len to the screen. Should 
+// automatically advance the cursor after a character has been written, and 
+// scroll if necessary.
 void fb_write(char *buf, unsigned int len) {
 	unsigned int i;
 	unsigned char fg = curr_color & 0xF0, bg = curr_color & 0x0F;

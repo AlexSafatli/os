@@ -1,3 +1,8 @@
+/* x86.h 
+* Author: Alex Safatli
+* x86-specific Structure Definitions for CPU and Stack States
+*/
+
 #ifndef X86_H
 #define X86_H
 
