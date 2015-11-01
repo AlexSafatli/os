@@ -16,15 +16,13 @@ kernel.elf: $(STDLIB_OBJS) $(KERNEL_OBJS)
 
 os.iso:
 	cp kernel.elf iso/boot/kernel.elf
-	genisoimage -R                              \
-                -b boot/grub/stage2_eltorito    \
-                -no-emul-boot                   \
-                -boot-load-size 4               \
-                -A os                           \
-                -input-charset utf8             \
-                -quiet                          \
-                -boot-info-table                \
-                -o os.iso                       \
+	genisoimage -R -A os -b boot/grub/stage2_eltorito \
+                -no-emul-boot                       \
+                -boot-load-size 4                   \
+                -input-charset utf8                 \
+                -quiet                              \
+                -boot-info-table                    \
+                -o os.iso                           \
                 iso
 
 %.o: %.c
@@ -42,4 +40,4 @@ run:
 	bochs -f bochsrc.txt -q
 
 clean:
-	-rm -rf *.o kernel/*.o lib/libc/*.o kernel.elf os.iso iso bochslog.txt com1.out
+	-rm -rf *.o kernel/*.o lib/libc/*.o kernel.elf os.iso iso bochslog* com1.out
