@@ -7,6 +7,8 @@
 #ifndef X86_H
 #define X86_H
 
+#include "io.h"
+
 // CPU State (Registers, Data Segment)
 typedef struct cpu_state {
   unsigned int ds;

@@ -6,6 +6,9 @@ idt_ptr_t   idt;
 
 void idt_init() {
   
+  // Initialize the PIC.
+  pic_init();
+
   // Set table entries.
   memset(&idt_entries, 0, sizeof(idt_entry_t) * IDT_NUM_ENTRIES);  
   idt_set_entry(0 ,(unsigned int) isr0 , 0x08, 0x8E);

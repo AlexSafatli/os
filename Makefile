@@ -1,6 +1,6 @@
 KERNEL_OBJS = loader.o kernel/kernel.o kernel/framebuffer.o kernel/io.o \
 			kernel/serial.o kernel/gdt.o kernel/lgdt.o kernel/idt.o \
-			kernel/interrupts.o
+			kernel/interrupts.o kernel/x86.o
 STDLIB_OBJS = lib/libc/string.o lib/libc/stdlib.o
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
@@ -16,15 +16,15 @@ kernel.elf: $(STDLIB_OBJS) $(KERNEL_OBJS)
 
 os.iso:
 	cp kernel.elf iso/boot/kernel.elf
-	@genisoimage -R -A os -b boot/grub/stage2_eltorito \
+	@genisoimage -R -b boot/grub/stage2_eltorito \
 				-no-emul-boot                          \
 				-boot-load-size 4                      \
 				-input-charset utf8                    \
 				-quiet                                 \
 				-boot-info-table                       \
 				-o os.iso                              \
+				-A os                                  \
 				iso
-	@echo "Created ISO"
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
