@@ -12,11 +12,15 @@
 #include "x86.h"
 #include "io.h"
 
+// Handler Type Definition
+typedef void (*interrupt_callback)(cpu_stack_t, stack_state_t);
+
 // General Interrupt Handler and Interrupt Request Handler
 void interrupt_handler(cpu_state_t cpu, stack_state_t stack, 
   unsigned int interrupt);
 void interrupt_request_handler(cpu_state_t cpu, stack_state_t stack, 
   unsigned int interrupt);
+#define interrupt_handle(x, cpu, stack) if (x != 0) (x((cpu), (stack)));
 
 // Load IDT Instruction
 void lidt(unsigned int ptr);
