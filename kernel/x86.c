@@ -1,6 +1,7 @@
 #include "x86.h"
 
 void pic_send_eoi(unsigned char irq) {
+  if (irq > (PIC2_END - PIC1_START)) return;
   if (irq >= 8) outb(PIC2_CMD, PIC_EOI);
   outb(PIC1_CMD, PIC_EOI);
 }

@@ -55,7 +55,7 @@ void isr29();
 void isr30();
 void isr31();
 
-// Specific IRQ Handlers
+// Specific IRQ Handlers for PIC
 void irq0();
 void irq1();
 void irq2();
