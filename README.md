@@ -16,11 +16,13 @@ could be downloaded on other platforms but that has not been tested. Development
 
     sudo apt-get install build-essential nasm genisoimage bochs bochs-sdl
 
-## Dependencies
+## Languages Used
 
 Loading of the operating system and incredibly low-level tasks are 
 delegated to **Assembly** code. Otherwise, the rest of the kernel and other 
 pieces of this operating system are written in Standard **C**.
+
+Plans are to eventually use **Go** to construct the *user space* modules.
 
 ## Purpose
 
