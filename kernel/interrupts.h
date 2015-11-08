@@ -13,7 +13,7 @@
 #include "io.h"
 
 // Handler Type Definition
-typedef void (*interrupt_callback)(cpu_stack_t, stack_state_t);
+typedef void (*interrupt_callback)(cpu_state_t, stack_state_t);
 
 // General Interrupt Handler and Interrupt Request Handler
 void interrupt_handler(cpu_state_t cpu, stack_state_t stack, 

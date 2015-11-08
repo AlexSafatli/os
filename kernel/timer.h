@@ -7,6 +7,7 @@
 #define TIMER_H
 
 #include "interrupts.h"
+#include "idt.h"
 
 #define PIT_DATA_PORT1 0x40
 #define PIT_DATA_PORT2 0x42

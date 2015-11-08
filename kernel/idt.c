@@ -84,7 +84,7 @@ void idt_set_entry(int pos, unsigned int offset, unsigned short selector,
 
 }
 
-void idt_register(int pos, interrupt_callback handler) {
+void idt_assign(int pos, interrupt_callback handler) {
 
   interrupt_vector[pos] = handler;
 
