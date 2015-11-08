@@ -20,7 +20,7 @@ void interrupt_handler(cpu_state_t cpu, stack_state_t stack,
   unsigned int interrupt);
 void interrupt_request_handler(cpu_state_t cpu, stack_state_t stack, 
   unsigned int interrupt);
-#define interrupt_handle(x, cpu, stack) if (x != 0) (x((cpu), (stack)));
+#define interrupt_handle(x, cpu, stack) if (x != 0) (x((cpu), (stack)))
 
 // Load IDT Instruction
 void lidt(unsigned int ptr);
