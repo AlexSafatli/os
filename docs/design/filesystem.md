@@ -1,6 +1,6 @@
 ## Filesystem
 
-In line with [the philosophy](http://suckless.org/philosophy) practiced over at 
+In line with [a philosophy](http://suckless.org/philosophy) documented at 
 the [**suckless**](http://suckless.org) project site, some ideas will be 
 borrowed from brainstorming for a filesystem found 
 [here](http://sta.li/filesystem).
