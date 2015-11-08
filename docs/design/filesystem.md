@@ -14,10 +14,10 @@ operating systems will be found, and detailed below.
     /
         /bin/
         /sys/
+            /cfg/
         /boot/
             /proc/
             /dev/
-        /cfg/
         /inc/
         /lib/
         /mount/
@@ -27,4 +27,4 @@ operating systems will be found, and detailed below.
 
 The user directories would be located within `/home/`, keeping the name as 
 found in UNIX-based operating systems to prevent confusion amongst current 
-system users.
+system users. No `/usr/` directory will be present in the system.
