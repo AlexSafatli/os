@@ -12,7 +12,7 @@ with the use of other resources (see below).
 As described in 
 [*the little book about OS development*](https://littleosbook.github.io/), 
 the following should be performed on a Debian-based system. Similar packages 
-should be downloaded on other platforms.
+could be downloaded on other platforms but that has not been tested. Development has been performed on both **Ubuntu 15.10** and **elementary OS Freya**.
 
     sudo apt-get install build-essential nasm genisoimage bochs bochs-sdl
 
