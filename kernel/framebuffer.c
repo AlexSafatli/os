@@ -1,7 +1,7 @@
 #include "framebuffer.h"
 
 // Pointer to framebuffer, current color, cursor index.
-static struct framebuffer *fb = {0};
+static struct framebuffer *fb;
 static unsigned char curr_color = FB_BLACK | FB_WHITE;
 static unsigned short cursor_pos = 0;
 
