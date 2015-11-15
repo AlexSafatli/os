@@ -35,6 +35,7 @@ typedef struct stack_state {
 #define PIC2_START 0x28                  /* Start at 40 */
 #define PIC2_END  (PIC2_START + 7)         /* End at 47 */
 #define PIC_EOI 0x20   /* End of Interrupt Command, ACK */
+
 /* Acknowledges an interrupt from either PIC1 or PIC2. */
 void pic_send_eoi(unsigned char irq);
 /* Initializes the PICs by remapping them to another interval (LOS 6.6). */

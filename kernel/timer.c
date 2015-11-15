@@ -13,9 +13,9 @@ void timer_init(unsigned int freq) {
   idt_assign(PIC1_START, &timer);
   unsigned int divisor = PIT_CLOCK_SPEED / freq;
   outb(PIT_CMD_PORT, PIT_REPEAT);
-  unsigned char low = (unsigned char) (divisor & 0xFF),
-                hi  = (unsigned char) ((divisor >> 8) & 0xFF);
-  outb(PIT_DATA_PORT1, low);
-  outb(PIT_DATA_PORT1, hi);
+  unsigned char l = (unsigned char) (divisor & 0xFF),
+                h = (unsigned char) ((divisor >> 8) & 0xFF);
+  outb(PIT_DATA_PORT1, l);
+  outb(PIT_DATA_PORT1, h);
 
 }
