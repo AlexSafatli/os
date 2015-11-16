@@ -10,12 +10,10 @@ static void timer(cpu_state_t cpu, stack_state_t stack) {
 
 void timer_init(unsigned int freq) {
   
-  idt_assign(PIC1_START, &timer);
+  interrupt_install(PIC1_START, &timer);
   unsigned int divisor = PIT_CLOCK_SPEED / freq;
   outb(PIT_CMD_PORT, PIT_REPEAT);
-  unsigned char l = (unsigned char) (divisor & 0xFF),
-                h = (unsigned char) ((divisor >> 8) & 0xFF);
-  outb(PIT_DATA_PORT1, l);
-  outb(PIT_DATA_PORT1, h);
+  outb(PIT_DATA_PORT1, divisor & 0xFF);
+  outb(PIT_DATA_PORT1, (divisor >> 8) & 0xFF);
 
 }

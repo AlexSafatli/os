@@ -6,13 +6,15 @@ idt_entry_t             idt_entries[IDT_NUM_ENTRIES];
 idt_ptr_t                                        idt;
 
 void idt_init() {
-  
+
+  // Clear table entries.
+  memset(&interrupt_vector, 0, sizeof(interrupt_callback) * IDT_NUM_ENTRIES);
+  memset(&idt_entries,      0, sizeof(idt_entry_t) *        IDT_NUM_ENTRIES);
+
   // Initialize the PIC.
   pic_init();
 
   // Set table entries.
-  memset(&interrupt_vector, 0, sizeof(interrupt_callback) * IDT_NUM_ENTRIES);
-  memset(&idt_entries, 0, sizeof(idt_entry_t) * IDT_NUM_ENTRIES);
   idt_set_entry(0 ,(unsigned int) isr0 , 0x08, 0x8E);
   idt_set_entry(1 ,(unsigned int) isr1 , 0x08, 0x8E);
   idt_set_entry(2 ,(unsigned int) isr2 , 0x08, 0x8E);
@@ -84,7 +86,7 @@ void idt_set_entry(int pos, unsigned int offset, unsigned short selector,
 
 }
 
-void idt_assign(int pos, interrupt_callback handler) {
+void interrupt_install(int pos, interrupt_callback handler) {
 
   interrupt_vector[pos] = handler;
 
@@ -94,7 +96,7 @@ void interrupt_handler(cpu_state_t cpu, stack_state_t stack,
   unsigned int interrupt) {
 
   (void)cpu; (void)stack;
-  interrupt_handle(interrupt_vector[interrupt], cpu, stack);
+  if (interrupt_vector[interrupt]) interrupt_vector[interrupt](cpu, stack);
 
 }
 
@@ -102,7 +104,6 @@ void interrupt_request_handler(cpu_state_t cpu, stack_state_t stack,
   unsigned int interrupt) {
 
   (void)cpu; (void)stack;
-  interrupt_handle(interrupt_vector[interrupt], cpu, stack);
   pic_send_eoi(interrupt - PIC1_START);
 
 }

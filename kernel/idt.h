@@ -35,7 +35,4 @@ void idt_init();
 void idt_set_entry(int pos, unsigned int offset, unsigned short selector, 
   unsigned char flags);
 
-/* Register a custom interrupt handler. */
-void idt_assign(int pos, interrupt_callback handler);
-
 #endif
