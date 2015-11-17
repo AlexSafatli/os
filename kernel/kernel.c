@@ -8,5 +8,6 @@ void kernel_init() {
   gdt_init();
   idt_init();
   fb_write("Fear is freedom! Subjugation is liberation! Contradiction is truth! Those are the facts of this world, and you will all surrender to them.");
+  fb_putui(2);
   //timer_init(50);
 }

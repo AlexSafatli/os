@@ -50,6 +50,29 @@ void fb_puts(char *buf, unsigned int len) {
 	fb_move_cursor(cursor_pos);
 }
 
+// Write a positive decimal integer to the screen.
+void fb_putui(unsigned int i) {
+	if (i == 0) {
+		fb_putc('0');
+		return;
+	}
+	int k = 0;
+	int n = i;
+	char c[32];
+	while (n > 0) { 
+		c[k] = '0' + n % 10;
+		n /= 10;
+		++k;
+	}
+	c[k] = 0;
+	char w[32];
+	w[k--] = 0;
+	int j = 0;
+	while (k >= 0) w[k--] = c[j++];
+	fb_write(w);
+}
+
+// Write a null-terminated string to the monitor.
 void fb_write(char *str) {
 	unsigned int i;
 	i = 0;
