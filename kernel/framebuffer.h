@@ -55,6 +55,8 @@ void fb_clear();
 void fb_write_cell(unsigned int pos, char c, unsigned char fg,
   unsigned char bg);
 void fb_move_cursor(unsigned short pos);
-void fb_write(char *buf, unsigned int len);
+void fb_putc(char c);
+void fb_puts(char *buf, unsigned int len);
+void fb_write(char *str);
 
 #endif
