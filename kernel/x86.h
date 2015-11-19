@@ -18,6 +18,7 @@ typedef struct cpu_state {
 
 // Stack State
 typedef struct stack_state {
+  unsigned int interrupt;
   unsigned int error_code;
   unsigned int eip;
   unsigned int cs;

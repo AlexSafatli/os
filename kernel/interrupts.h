@@ -16,10 +16,8 @@
 typedef void (*interrupt_callback)(cpu_state_t, stack_state_t);
 
 // General Interrupt Handler and Interrupt Request Handler
-void interrupt_handler(cpu_state_t cpu, stack_state_t stack, 
-  unsigned int interrupt);
-void interrupt_ack(cpu_state_t cpu, stack_state_t stack, 
-  unsigned int interrupt);
+void interrupt_handler(cpu_state_t cpu, stack_state_t stack);
+void interrupt_ack    (cpu_state_t cpu, stack_state_t stack);
 
 /* Register a custom interrupt handler. */
 void interrupt_install(int pos, interrupt_callback handler);

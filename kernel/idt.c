@@ -92,19 +92,17 @@ void interrupt_install(int pos, interrupt_callback handler) {
 
 }
 
-void interrupt_handler(cpu_state_t cpu, stack_state_t stack,
-  unsigned int interrupt) {
+void interrupt_handler(cpu_state_t cpu, stack_state_t stack) {
 
   (void)cpu; (void)stack;
-  fb_putui(interrupt);
-  if (interrupt_vector[interrupt]) interrupt_vector[interrupt](cpu, stack);
+  fb_putui(stack.interrupt);
+  if (interrupt_vector[stack.interrupt]) interrupt_vector[stack.interrupt](cpu, stack);
 
 }
 
-void interrupt_ack(cpu_state_t cpu, stack_state_t stack,
-  unsigned int interrupt) {
+void interrupt_ack(cpu_state_t cpu, stack_state_t stack) {
 
   (void)cpu; (void)stack;
-  pic_send_eoi(interrupt - PIC1_START);
+  pic_send_eoi(stack.interrupt - PIC1_START);
 
 }
