@@ -15,6 +15,6 @@
 #define PIT_REPEAT      0x36
 #define PIT_CLOCK_SPEED 1193180 /* Hz */
 
-void timer_init(unsigned int);
+void timer_init(unsigned int freq);
 
 #endif

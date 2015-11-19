@@ -1,6 +1,6 @@
 #include "idt.h"
 #include <string.h>
-
+#include "framebuffer.h"
 interrupt_callback interrupt_vector[IDT_NUM_ENTRIES];
 idt_entry_t             idt_entries[IDT_NUM_ENTRIES];
 idt_ptr_t                                        idt;
@@ -96,11 +96,12 @@ void interrupt_handler(cpu_state_t cpu, stack_state_t stack,
   unsigned int interrupt) {
 
   (void)cpu; (void)stack;
+  fb_putui(interrupt);
   if (interrupt_vector[interrupt]) interrupt_vector[interrupt](cpu, stack);
 
 }
 
-void interrupt_request_handler(cpu_state_t cpu, stack_state_t stack,
+void interrupt_ack(cpu_state_t cpu, stack_state_t stack,
   unsigned int interrupt) {
 
   (void)cpu; (void)stack;
