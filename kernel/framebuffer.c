@@ -1,8 +1,8 @@
 #include "framebuffer.h"
 
-// Pointer to framebuffer, current color, cursor index.
+// Pointers to framebuffer, current color, cursor index.
 static struct framebuffer *fb;
-static unsigned char curr_color = FB_BLACK | FB_WHITE;
+static unsigned char curr_color  = FB_BLACK | FB_WHITE;
 static unsigned short cursor_pos = 0;
 
 // Initialize the framebuffer.
@@ -13,13 +13,13 @@ void fb_init() {
 // Clear the framebuffer.
 void fb_clear() {
 	int i;
-	for (i = 0; i < FB_NUM_CELLS; ++i) fb_putc(0x20);
+	for (i = 0; i < FB_NUM_CELLS; ++i) fb_putc(0x20); // Put a whitespace.
 }
 
 // Write a character with a foreground and background at position pos in buffer.
 void fb_write_cell(unsigned int pos, char c, unsigned char fg, 
 	unsigned char bg) {
-	fb[pos].c = c;
+	fb[pos].c      = c;
 	fb[pos].colors = ((fg & 0x0F) << 4) | (bg & 0x0F);
 }
 

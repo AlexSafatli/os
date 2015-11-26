@@ -8,6 +8,7 @@ global lidt
 lidt:
   mov eax, [esp + 4]                      ; get first entry address
   lidt [eax]                              ; load the table
+  sti                                     ; enable/resume interrupts
   ret                                     ; return to calling function
 
 %macro no_error_code_interrupt_handler 1
