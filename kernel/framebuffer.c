@@ -1,5 +1,6 @@
 #include "framebuffer.h"
 #include "io.h"
+#include <stdlib.h>
 
 // Pointers to framebuffer, current color, cursor index.
 static struct framebuffer *fb;
@@ -57,18 +58,9 @@ void fb_putui(unsigned int i) {
 		fb_putc('0');
 		return;
 	}
-	int k  = 0;
-	int n  = i;
-	char c[32], w[32];
-	while (n > 0) { 
-		c[k] = '0' + n % 10;
-		n /= 10; ++k;
-	}
-	c[k]   = 0;
-	w[k--] = 0;
-	int j  = 0;
-	while (k >= 0) w[k--] = c[j++];
-	fb_write(w);
+	char c[32];
+	itoa(i,c);
+	fb_write(c);
 }
 
 // Write a null-terminated string to the monitor.
