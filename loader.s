@@ -31,8 +31,8 @@ align 4                              ; code must be 4 byte aligned
 ; =============================================================================
 
 loader:                              ; entry point
+  cli                                ; stop all interrupts until initialized
   mov eax, 0xCAFEBABE                ; place 0xCAFEBABE into eax register
-  cli                                ; disable all interrupts
   mov esp, kernel_stack + KERNEL_STACK_SIZE
                                      ; make stack register point to stack
   call kernel_init                   ; initialize kernel

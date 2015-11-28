@@ -1,5 +1,5 @@
 extern interrupt_handler                  ; C function to handle interrupt
-extern interrupt_request_handler          ; C function to handle requests
+extern interrupt_ack                      ; C function to handle requests
 
 global lidt
 ; lidt - load the interrupt descriptor table (IDT)
@@ -8,6 +8,7 @@ global lidt
 lidt:
   mov eax, [esp + 4]                      ; get first entry address
   lidt [eax]                              ; load the table
+  sti                                     ; enable/resume interrupts
   ret                                     ; return to calling function
 
 %macro no_error_code_interrupt_handler 1
@@ -46,11 +47,11 @@ isr_common:                               ;
   mov fs, ax                              ;
   mov gs, ax                              ;
   call interrupt_handler                  ; call C function to handle interrupt
-  pop eax                                 ; reload original ds descriptor
-  mov ds, ax                              ; 
-  mov es, ax                              ;
-  mov fs, ax                              ;
-  mov gs, ax                              ;
+  pop ebx                                 ; reload original ds descriptor
+  mov ds, bx                              ; 
+  mov es, bx                              ;
+  mov fs, bx                              ;
+  mov gs, bx                              ;
   popa                                    ; reload registers
   add esp, 8                              ; restore esp
   sti                                     ;
@@ -66,12 +67,12 @@ irq_common:                               ;
   mov fs, ax                              ;
   mov gs, ax                              ;
   call interrupt_handler                  ; call C function to handle interrupt
-  call interrupt_request_handler          ; call C function to handle irq
-  pop eax                                 ; reload original ds descriptor
-  mov ds, ax                              ; 
-  mov es, ax                              ;
-  mov fs, ax                              ;
-  mov gs, ax                              ;
+  call interrupt_ack                      ; call C function to acknowledge irq
+  pop ebx                                 ; reload original ds descriptor
+  mov ds, bx                              ; 
+  mov es, bx                              ;
+  mov fs, bx                              ;
+  mov gs, bx                              ;
   popa                                    ; reload registers
   add esp, 8                              ; restore esp
   sti                                     ;

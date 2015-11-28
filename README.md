@@ -12,15 +12,17 @@ with the use of other resources (see below).
 As described in 
 [*the little book about OS development*](https://littleosbook.github.io/), 
 the following should be performed on a Debian-based system. Similar packages 
-should be downloaded on other platforms.
+could be downloaded on other platforms but that has not been tested. Development has been performed on both **Ubuntu 15.10** and **elementary OS Freya**.
 
     sudo apt-get install build-essential nasm genisoimage bochs bochs-sdl
 
-## Dependencies
+## Languages Used
 
 Loading of the operating system and incredibly low-level tasks are 
 delegated to **Assembly** code. Otherwise, the rest of the kernel and other 
 pieces of this operating system are written in Standard **C**.
+
+Plans are to eventually use **Go** to construct the *user space* modules.
 
 ## Purpose
 

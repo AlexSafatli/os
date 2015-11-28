@@ -1,6 +1,6 @@
 KERNEL_OBJS = loader.o kernel/kernel.o kernel/framebuffer.o kernel/io.o \
 			kernel/serial.o kernel/gdt.o kernel/lgdt.o kernel/idt.o \
-			kernel/interrupts.o kernel/x86.o
+			kernel/interrupts.o kernel/timer.o kernel/x86.o
 STDLIB_OBJS = lib/libc/string.o lib/libc/stdlib.o
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \

@@ -28,10 +28,10 @@ typedef struct idt_entry {
 // Entry Definitions
 #define IDT_NUM_ENTRIES 256
 
-/* Initialize all logic for managing the GDT. */
+/* Initialize all logic for managing the IDT. */
 void idt_init();
 
-/* Set an entry in the GDT. */
+/* Set an entry in the IDT. */
 void idt_set_entry(int pos, unsigned int offset, unsigned short selector, 
   unsigned char flags);
 
