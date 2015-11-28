@@ -1,6 +1,5 @@
 #include "idt.h"
 #include <string.h>
-#include "framebuffer.h" // @todo REMOVE
 
 interrupt_callback interrupt_vector[IDT_NUM_ENTRIES];
 idt_entry_t             idt_entries[IDT_NUM_ENTRIES];
@@ -96,7 +95,6 @@ void interrupt_install(int pos, interrupt_callback handler) {
 void interrupt_handler(cpu_state_t cpu, stack_state_t stack) {
 
   (void)cpu; (void)stack;
-  fb_putui(stack.interrupt); // @todo REMOVE
   if (interrupt_vector[stack.interrupt]) interrupt_vector[stack.interrupt](cpu, stack);
 
 }
