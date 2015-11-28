@@ -15,7 +15,7 @@ operating systems will be found, and detailed below.
         /bin/
         /sys/
             /cfg/
-        /boot/
+            /boot/
             /proc/
             /dev/
         /inc/
