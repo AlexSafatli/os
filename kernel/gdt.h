@@ -42,7 +42,7 @@ void gdt_init();
 void gdt_set_entry(int pos, unsigned int base, 
   unsigned int limit, unsigned short access, unsigned short flags);
 
-/* Tell the computer where our GDT will be (load it). */
+/* Tell the computer where our GDT will be (load it) and restart interrupts. */
 void lgdt(unsigned int ptr);
 
 #endif

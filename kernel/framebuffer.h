@@ -13,7 +13,7 @@
 
 // Dimensions
 #define FB_TERMINAL_HEIGHT 24
-#define FB_TERMINAL_WIDTH 80
+#define FB_TERMINAL_WIDTH  80
 #define FB_NUM_CELLS (FB_TERMINAL_HEIGHT*FB_TERMINAL_WIDTH)
 
 // Colors
@@ -35,12 +35,12 @@
 #define FB_WHITE 15
 
 // I/O Ports
-#define FB_CMD_PORT 0x3D4
-#define FB_DATA_PORT 0x3D5
+#define FB_CMD_PORT   0x3D4
+#define FB_DATA_PORT  0x3D5
 
 // I/O Port Commands
 #define FB_HIGH_BYTE_CMD 14
-#define FB_LOW_BYTE_CMD 15
+#define FB_LOW_BYTE_CMD  15
 
 /* Framebuffer Struct */
 struct framebuffer {
