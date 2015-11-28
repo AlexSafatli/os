@@ -24,18 +24,18 @@ void fb_write_cell(unsigned int pos, char c, unsigned char fg,
 }
 
 // Move the cursor to a new position in the framebuffer.
-void fb_move_cursor(unsigned short pos) {
+void fb_move_cursor() {
 	outb(FB_CMD_PORT, FB_HIGH_BYTE_CMD);
-	outb(FB_DATA_PORT, ((pos >> 8) & 0x00FF));
+	outb(FB_DATA_PORT, ((cursor_pos >> 8) & 0x00FF));
 	outb(FB_CMD_PORT, FB_LOW_BYTE_CMD);
-	outb(FB_DATA_PORT, pos & 0x00FF);
+	outb(FB_DATA_PORT, cursor_pos & 0x00FF);
 }
 
 // Write a single character to the screen from wherever the cursor is.
 void fb_putc(char c) {
 	fb_write_cell(cursor_pos, c, curr_color & 0xF0, curr_color & 0x0F);
 	cursor_pos = (cursor_pos + 1) % FB_NUM_CELLS;
-	fb_move_cursor(cursor_pos);
+	fb_move_cursor();
 }
 
 // Write the contents of a buffer of length len to the screen. Should 
@@ -47,7 +47,7 @@ void fb_puts(char *buf, unsigned int len) {
 		fb_write_cell(cursor_pos, buf[i], curr_color & 0xF0, curr_color & 0x0F);
 		cursor_pos = (cursor_pos + 1) % FB_NUM_CELLS;
 	}
-	fb_move_cursor(cursor_pos);
+	fb_move_cursor();
 }
 
 // Write a positive decimal integer to the screen.
@@ -56,18 +56,16 @@ void fb_putui(unsigned int i) {
 		fb_putc('0');
 		return;
 	}
-	int k = 0;
-	int n = i;
-	char c[32];
+	int k  = 0;
+	int n  = i;
+	char c[32], w[32];
 	while (n > 0) { 
 		c[k] = '0' + n % 10;
-		n /= 10;
-		++k;
+		n /= 10; ++k;
 	}
-	c[k] = 0;
-	char w[32];
+	c[k]   = 0;
 	w[k--] = 0;
-	int j = 0;
+	int j  = 0;
 	while (k >= 0) w[k--] = c[j++];
 	fb_write(w);
 }
@@ -80,5 +78,5 @@ void fb_write(char *str) {
 		fb_write_cell(cursor_pos, str[i++], curr_color & 0xF0, curr_color & 0x0F);
 		cursor_pos = (cursor_pos + 1) % FB_NUM_CELLS;
 	}
-	fb_move_cursor(cursor_pos);
+	fb_move_cursor();
 }
