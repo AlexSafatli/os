@@ -25,8 +25,9 @@ system. Simply run
 Followed by
 
     vagrant ssh
+    cd /vagrant/
 
-To get a shell.
+To get a shell into the folder.
 
 ## Languages Used
 
