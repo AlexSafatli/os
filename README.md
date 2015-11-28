@@ -15,6 +15,19 @@ performed on both **Ubuntu 15.10** and **elementary OS Freya**.
 
     sudo apt-get install build-essential nasm genisoimage bochs bochs-sdl
 
+For those systems that have not been tested or are more difficult to setup, a 
+`Vagrantfile` is included for creating a vagrant box to perform testing of the 
+system. Simply run
+
+    vagrant up
+
+Followed by
+
+    vagrant ssh
+    cd /vagrant/
+
+To get a shell into the folder.
+
 ## Languages Used
 
 Loading of the operating system and incredibly low-level tasks are 

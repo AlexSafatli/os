@@ -26,15 +26,15 @@ typedef struct stack_state {
 } stack_state_t;
 
 // PIC x86-specific Definitions
-#define PIC1       0x20    /* IO Base Address for Master */
-#define PIC2       0xA0    /* IO Base Address for Slave  */
+#define PIC1       0x20       /* IO Base Address for Master */
+#define PIC2       0xA0       /* IO Base Address for Slave  */
 #define PIC1_CMD   PIC1
 #define PIC2_CMD   PIC2
 #define PIC1_DATA  (PIC1 + 1)
 #define PIC2_DATA  (PIC2 + 1)
-#define PIC1_START 0x20                  /* Start at 32 */
-#define PIC2_START 0x28                  /* Start at 40 */
-#define PIC2_END   (PIC2_START + 7)         /* End at 47 */
+#define PIC1_START 0x20                     /* Start at 32 */
+#define PIC2_START 0x28                     /* Start at 40 */
+#define PIC2_END   (PIC2_START + 7)           /* End at 47 */
 #define PIC_EOI    0x20   /* End of Interrupt Command, ACK */
 
 /* Acknowledges an interrupt from either PIC1 or PIC2. */
