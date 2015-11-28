@@ -1,10 +1,9 @@
 #include "string.h"
 
 size_t strlen(const char *str) {
-  int i;
-  i = 0;
-  while (str[i] != '\0') ++i;
-  return i+1; 
+  const char *ptr;
+  for (ptr = str; *ptr != '\0'; ++ptr) ;
+  return ptr - str;
 }
 
 int strcmp(const char *a, const char *b) {
