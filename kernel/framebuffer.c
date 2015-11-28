@@ -1,4 +1,5 @@
 #include "framebuffer.h"
+#include "io.h"
 
 // Pointers to framebuffer, current color, cursor index.
 static struct framebuffer *fb;

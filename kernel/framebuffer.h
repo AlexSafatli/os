@@ -8,8 +8,6 @@
 #ifndef FRAMEBUFFER_H
 #define FRAMEBUFFER_H
 
-#include "io.h"
-
 // VGA Text Mode Buffer
 #define FB_BUFFER 0xB8000
 
@@ -52,9 +50,9 @@ struct framebuffer {
 
 void fb_init();
 void fb_clear();
+void fb_move_cursor();
 void fb_write_cell(unsigned int pos, char c, unsigned char fg,
   unsigned char bg);
-void fb_move_cursor(unsigned short pos);
 void fb_putc(char c);
 void fb_puts(char *buf, unsigned int len);
 void fb_putui(unsigned int i);
