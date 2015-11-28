@@ -8,7 +8,7 @@ void serial_init(unsigned short com) {
 }
 
 void serial_config_bit_rate(unsigned short com, unsigned short divisor) {
-  outb(SERIAL_LINE_CMD_PORT(com),SERIAL_LINE_ENABLE_DLAB); // Enable DLAB.
+  outb(SERIAL_LINE_CMD_PORT(com), SERIAL_LINE_ENABLE_DLAB); // Enable DLAB.
   outb(SERIAL_DATA_PORT(com), (divisor >> 8) & 0x00FF); // Highest 8 bits first.
   outb(SERIAL_DATA_PORT(com), (divisor) & 0x00FF); // Lowest 8 bits next.
 }
@@ -22,8 +22,7 @@ void serial_config_line(unsigned short com) {
 void serial_config_buffer(unsigned short com) {
   /* The default value by convention, for now, will be
   * one which enables the FIFO, clears both buffers and
-  * uses 14 bytes of size, i.e. 0xC7.
-  */
+  * uses 14 bytes of size, i.e. 0xC7. */
   outb(SERIAL_FIFO_CMD_PORT(com), SERIAL_BUFFER_DEFAULT);
 }
 
