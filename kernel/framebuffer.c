@@ -27,9 +27,9 @@ void fb_write_cell(unsigned int pos, char c, unsigned char fg,
 
 // Move the cursor to a new position in the framebuffer.
 void fb_move_cursor() {
-	outb(FB_CMD_PORT, FB_HIGH_BYTE_CMD);
+	outb(FB_CMD_PORT,  FB_HIGH_BYTE_CMD);
 	outb(FB_DATA_PORT, ((cursor_pos >> 8) & 0x00FF));
-	outb(FB_CMD_PORT, FB_LOW_BYTE_CMD);
+	outb(FB_CMD_PORT,  FB_LOW_BYTE_CMD);
 	outb(FB_DATA_PORT, cursor_pos & 0x00FF);
 }
 

@@ -19,10 +19,10 @@
 #define SERIAL_COM3 0x3E8 /* COM3 Base Port (Less Reliable) */
 #define SERIAL_COM4 0x2E8 /* COM4 Base Port (Less Reliable) */
 
-#define SERIAL_DATA_PORT(base) (base)
-#define SERIAL_FIFO_CMD_PORT(base) (base+2)
-#define SERIAL_LINE_CMD_PORT(base) (base+3)
-#define SERIAL_MODEM_CMD_PORT(base) (base+4)
+#define SERIAL_DATA_PORT(base)        (base)
+#define SERIAL_FIFO_CMD_PORT(base)    (base+2)
+#define SERIAL_LINE_CMD_PORT(base)    (base+3)
+#define SERIAL_MODEM_CMD_PORT(base)   (base+4)
 #define SERIAL_LINE_STATUS_PORT(base) (base+5)
 
 // I/O Port Commands
